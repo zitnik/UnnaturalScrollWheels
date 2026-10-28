@@ -15,6 +15,7 @@
 		914D7D8225C32FD800503565 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 914D7D8425C32FD800503565 /* Localizable.strings */; };
 		91727DB224CCBDDA00432163 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91727DB124CCBDDA00432163 /* PreferencesViewController.swift */; };
 		918546AB25C0758700B2AD21 /* MenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918546AA25C0758700B2AD21 /* MenuBarItem.swift */; };
+		5E1A0C022F00000100A0B0C0 /* ConnectedMice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1A0C012F00000100A0B0C0 /* ConnectedMice.swift */; };
 		91C7ECE424CC86B6007E2D4C /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C7ECE324CC86B6007E2D4C /* Options.swift */; };
 		91C7ECE624CC8789007E2D4C /* ScrollInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C7ECE524CC8789007E2D4C /* ScrollInterceptor.swift */; };
 		91D8069E24CB37B80092C286 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D8069D24CB37B80092C286 /* AppDelegate.swift */; };
@@ -47,6 +48,7 @@
 		914D7D8925C342A900503565 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		91727DB124CCBDDA00432163 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		918546AA25C0758700B2AD21 /* MenuBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarItem.swift; sourceTree = "<group>"; };
+		5E1A0C012F00000100A0B0C0 /* ConnectedMice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedMice.swift; sourceTree = "<group>"; };
 		91C7ECE324CC86B6007E2D4C /* Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
 		91C7ECE524CC8789007E2D4C /* ScrollInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollInterceptor.swift; sourceTree = "<group>"; };
 		91D8069A24CB37B80092C286 /* UnnaturalScrollWheels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnnaturalScrollWheels.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +120,7 @@
 			children = (
 				914D7D8425C32FD800503565 /* Localizable.strings */,
 				91D8069D24CB37B80092C286 /* AppDelegate.swift */,
+				5E1A0C012F00000100A0B0C0 /* ConnectedMice.swift */,
 				91C7ECE324CC86B6007E2D4C /* Options.swift */,
 				91727DB124CCBDDA00432163 /* PreferencesViewController.swift */,
 				91C7ECE524CC8789007E2D4C /* ScrollInterceptor.swift */,
@@ -244,6 +247,7 @@
 				91C7ECE624CC8789007E2D4C /* ScrollInterceptor.swift in Sources */,
 				918546AB25C0758700B2AD21 /* MenuBarItem.swift in Sources */,
 				91D8069E24CB37B80092C286 /* AppDelegate.swift in Sources */,
+				5E1A0C022F00000100A0B0C0 /* ConnectedMice.swift in Sources */,
 				91C7ECE424CC86B6007E2D4C /* Options.swift in Sources */,
 				91727DB224CCBDDA00432163 /* PreferencesViewController.swift in Sources */,
 			);

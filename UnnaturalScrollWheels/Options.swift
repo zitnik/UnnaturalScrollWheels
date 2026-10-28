@@ -62,8 +62,29 @@ class Options {
         invertHorizontalScroll = UserDefaults.standard.bool(forKey: "InvertHorizontalScroll")
         disableScrollAccel = UserDefaults.standard.bool(forKey: "DisableScrollAccel")
         scrollLines = Int64(UserDefaults.standard.integer(forKey: "ScrollLines"))
-        alternateDetectionMethod = UserDefaults.standard.bool(forKey: "AlternateDetectionMethod")
+        loadAlternateDetectionMethod()
         disableMouseAccel = UserDefaults.standard.bool(forKey: "DisableMouseAccel")
         launchAtLogin = UserDefaults.standard.bool(forKey: "LaunchAtLogin")
+    }
+
+    // Uses the setting saved for the most recently connected mouse,
+    // falling back to the last value applied in preferences
+    func loadAlternateDetectionMethod() {
+        let saved = alternateDetectionMethodByMouse()
+        alternateDetectionMethod = ConnectedMice.shared.mice.lazy.compactMap { saved[$0.id] }.first
+            ?? UserDefaults.standard.bool(forKey: "AlternateDetectionMethod")
+    }
+
+    func saveAlternateDetectionMethod(_ value: Bool) {
+        UserDefaults.standard.set(value, forKey: "AlternateDetectionMethod")
+        var saved = alternateDetectionMethodByMouse()
+        for mouse in ConnectedMice.shared.mice {
+            saved[mouse.id] = value
+        }
+        UserDefaults.standard.set(saved, forKey: "AlternateDetectionMethodByMouse")
+    }
+
+    private func alternateDetectionMethodByMouse() -> [String: Bool] {
+        return UserDefaults.standard.dictionary(forKey: "AlternateDetectionMethodByMouse") as? [String: Bool] ?? [:]
     }
 }

@@ -32,6 +32,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         }
         menu?.insertItem(sponsorItem, at: 2)
         
+        ConnectedMice.shared.onChange = { [weak self] in
+            Options.shared.loadAlternateDetectionMethod()
+            (self?.prefsWindow?.contentViewController as? PreferencesViewController)?.refreshAlternateDetectionMethod()
+        }
+        ConnectedMice.shared.start()
+        
         refresh()
         let trusted = AXIsProcessTrusted()
         if trusted {

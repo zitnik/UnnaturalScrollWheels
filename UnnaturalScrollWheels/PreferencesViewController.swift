@@ -20,6 +20,7 @@ class PreferencesViewController: NSViewController {
     @IBOutlet weak var showMenuBarItem: NSButton?
     @IBOutlet weak var launchAtLogin: NSButton?
     let appDelegate = NSApp.delegate as? AppDelegate
+    private var alternateDetectionMethodTitle = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,10 +29,20 @@ class PreferencesViewController: NSViewController {
         disableScrollAccel?.takeIntValueFrom(Options.shared.disableScrollAccel)
         scrollLines?.takeIntValueFrom(Options.shared.scrollLines)
         scrollLinesText?.takeStringValueFrom(scrollLines?.integerValue)
-        alternateDetectionMethod?.takeIntValueFrom(Options.shared.alternateDetectionMethod)
+        alternateDetectionMethodTitle = alternateDetectionMethod?.title ?? ""
+        refreshAlternateDetectionMethod()
         disableMouseAccel?.takeIntValueFrom(Options.shared.disableMouseAccel)
         showMenuBarItem?.takeIntValueFrom(Options.shared.showMenuBarIcon)
         launchAtLogin?.takeIntValueFrom(Options.shared.launchAtLogin)
+    }
+    
+    // Shows which mice the checkbox is remembered for
+    func refreshAlternateDetectionMethod() {
+        alternateDetectionMethod?.takeIntValueFrom(Options.shared.alternateDetectionMethod)
+        let names = ConnectedMice.shared.mice.map { $0.name }
+        alternateDetectionMethod?.title = names.isEmpty
+            ? alternateDetectionMethodTitle
+            : "\(alternateDetectionMethodTitle) (\(names.joined(separator: ", ")))"
     }
     
     func activate() {
@@ -85,7 +96,7 @@ class PreferencesViewController: NSViewController {
         UserDefaults.standard.set(invertHorizontalScroll?.state == NSControl.StateValue.on, forKey: "InvertHorizontalScroll")
         UserDefaults.standard.set(disableScrollAccel?.state == NSControl.StateValue.on, forKey: "DisableScrollAccel")
         UserDefaults.standard.set(scrollLines?.integerValue, forKey: "ScrollLines")
-        UserDefaults.standard.set(alternateDetectionMethod?.state == NSControl.StateValue.on, forKey: "AlternateDetectionMethod")
+        Options.shared.saveAlternateDetectionMethod(alternateDetectionMethod?.state == NSControl.StateValue.on)
         UserDefaults.standard.set(disableMouseAccel?.state == NSControl.StateValue.on, forKey: "DisableMouseAccel")
         UserDefaults.standard.set(showMenuBarItem?.state == NSControl.StateValue.on, forKey: "ShowMenuBarIcon")
         UserDefaults.standard.set(launchAtLogin?.state == NSControl.StateValue.on, forKey: "LaunchAtLogin")
